@@ -34,39 +34,40 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import { pages } from './pages';
+
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
+    <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
+          {pages.map((page, index) => {
+            return <Route key={index} path={page.path} component={page.component} />
+          })}
+
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to={pages.filter(page => page.redirect)[0].path} />
           </Route>
+
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
+          {pages.map((page, index) => {
+
+            const {label, path, icon, isTab} = page;
+
+            if (isTab) {
+
+              return (
+                // tab= could also be label
+                <IonTabButton key={index} tab={label} href={path}>
+                  <IonIcon icon={icon} />
+                  <IonLabel>{label}</IonLabel>
+                </IonTabButton>
+              )
+            } else return null;
+          })}
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
