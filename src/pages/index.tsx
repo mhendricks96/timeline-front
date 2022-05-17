@@ -6,13 +6,13 @@ import {
 
 import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";
-import Tab3 from "./Tab3";
+import Settings from "./Settings";
 import Tab4 from "./Tab4";
 
 export const pages = [
   {
     label: "Friends",
-    path: "/tab1",
+    path: "/friends",
     icon: people,
     component: Tab1,
     isTab: true,
@@ -20,7 +20,7 @@ export const pages = [
   },
   {
     label: "Timeline",
-    path: "/tab2",
+    path: "/timeline",
     icon: people,
     component: Tab2,
     isTab: true,
@@ -28,15 +28,15 @@ export const pages = [
   },
   {
     label: "Settings",
-    path: "/tab3",
+    path: "/settings",
     icon: paperPlaneOutline,
-    component: Tab3,
+    component: Settings,
     isTab: true,
     redirect: false,
   },
   {
     label: "User Info",
-    path: "/tab4",
+    path: "/userinfo",
     icon: idCardOutline,
     component: Tab4,
     isTab: true,

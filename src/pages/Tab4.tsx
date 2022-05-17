@@ -5,7 +5,7 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import "./Tab3.css";
+// import "./Tab3.css";
 
 import { useAuth0 } from "@auth0/auth0-react";
 // import { Browser } from '@capacitor/browser';
