@@ -8,7 +8,6 @@ const UserInfo: React.FC = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-  // console.log(user)
 
   return (
     <IonCard>

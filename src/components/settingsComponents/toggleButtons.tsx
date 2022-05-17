@@ -6,10 +6,10 @@ import {
   IonItemDivider,
   ToggleChangeEventDetail,
 } from "@ionic/react";
-import { useAuth0 } from "@auth0/auth0-react";
 import React, { useState } from "react";
 
 const ToggleButtons: React.FC = () => {
+
   const [sportsOn, setSportsOn] = useState<boolean>(true);
   const [newsOn, setNewsOn] = useState<boolean>(true);
   const [entertainmentOn, setEntertainmentOn] = useState<boolean>(true);
@@ -17,44 +17,29 @@ const ToggleButtons: React.FC = () => {
   const [popOn, setPopOn] = useState<boolean>(true);
 
   const categories = [
-    { label: "Sports", value: "sports", checked: sportsOn },
-    { label: "News", value: "news", checked: newsOn },
+    { label: "Sports", value: "sports", checked: sportsOn, toggle: setSportsOn },
+    { label: "News", value: "news", checked: newsOn, toggle: setNewsOn },
     {
       label: "Entertainment",
       value: "entertainment",
       checked: entertainmentOn,
+      toggle: setEntertainmentOn
     },
-    { label: "Politics", value: "politics", checked: politicsOn },
-    { label: "Pop", value: "pop", checked: popOn },
+    { label: "Politics", value: "politics", checked: politicsOn, toggle: setPoliticsOn},
+    { label: "Pop", value: "pop", checked: popOn, toggle: setPopOn },
   ];
 
   const handleToggle = (e: ToggleChangeEventDetail<any>) => {
     let value = e.value;
     let checked = e.checked;
-    // console.log(value, checked);
 
-    if (value === "sports") {
-      setSportsOn(checked);
-    }
-    if (value === "news") {
-      setNewsOn(checked);
-    }
-    if (value === "entertainment") {
-      setEntertainmentOn(checked);
-    }
-    if (value === "politics") {
-      setPoliticsOn(checked);
-    }
-    if (value === "pop") {
-      setPopOn(checked);
+    for (let i = 0; i < categories.length; i++){
+      let category = categories[i]
+      if (value === category.value){
+        category.toggle(checked)
+      }
     }
   };
-
-  const { isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
 
   console.log({
     "sports": sportsOn,
