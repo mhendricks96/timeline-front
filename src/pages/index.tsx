@@ -1,11 +1,12 @@
 import {
-  people,
-  paperPlaneOutline,
+  peopleOutline,
+  settingsOutline,
   idCardOutline,
+  hourglassOutline,
 } from "ionicons/icons";
 
-import Tab1 from "./Tab1";
-import Tab2 from "./Tab2";
+import Friends from "./Friends";
+import Timeline from "./Timeline";
 import Settings from "./Settings";
 import Tab4 from "./Tab4";
 
@@ -13,23 +14,23 @@ export const pages = [
   {
     label: "Friends",
     path: "/friends",
-    icon: people,
-    component: Tab1,
+    icon: peopleOutline,
+    component: Friends,
     isTab: true,
     redirect: false,
   },
   {
     label: "Timeline",
     path: "/timeline",
-    icon: people,
-    component: Tab2,
+    icon: hourglassOutline,
+    component: Timeline,
     isTab: true,
     redirect: false,
   },
   {
     label: "Settings",
     path: "/settings",
-    icon: paperPlaneOutline,
+    icon: settingsOutline,
     component: Settings,
     isTab: true,
     redirect: false,

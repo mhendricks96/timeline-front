@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import './Tab1.css';
+import './Friends.css';
 
-const Tab1: React.FC = () => {
+const Friends: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -20,4 +20,4 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export default Friends;

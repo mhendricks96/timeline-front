@@ -26,16 +26,16 @@ const Tab4: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>User Info</IonTitle>
+          <IonTitle className="ion-text-center">User Info</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <div>
           {isAuthenticated ? <UserInfo /> : <h1>Please Log In</h1>}
           {isAuthenticated ? (
-            <IonButton onClick={() => logout()}>Log Out</IonButton>
+            <IonButton expand="block" onClick={() => logout()}>Log Out</IonButton>
           ) : (
-            <IonButton onClick={() => loginWithRedirect()}>Log In</IonButton>
+            <IonButton expand="block" onClick={() => loginWithRedirect()}>Log In</IonButton>
           )}
         </div>
       </IonContent>

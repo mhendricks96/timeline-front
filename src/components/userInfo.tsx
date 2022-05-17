@@ -17,7 +17,7 @@ const UserInfo: React.FC = () => {
             <img src={user?.picture} alt="the users puicture associated with account"/>
           </IonThumbnail>
           <IonCardSubtitle>{user?.email}</IonCardSubtitle>
-          <IonCardTitle><p>{user?.name}</p></IonCardTitle>
+          <IonCardTitle><h1>{user?.name}</h1></IonCardTitle>
         </IonCardHeader>
 
         <IonCardContent>
