@@ -1,20 +1,17 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Timeline.css';
+import CurrentYear from "../components/timelineComponents/currentYear"
 
 const Timeline: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Timeline</IonTitle>
+          <IonTitle className="ion-text-center">Timeline</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Timeline</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <CurrentYear />
       </IonContent>
     </IonPage>
   );

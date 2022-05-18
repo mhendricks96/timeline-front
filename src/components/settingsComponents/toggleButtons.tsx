@@ -41,13 +41,13 @@ const ToggleButtons: React.FC = () => {
     }
   };
 
-  console.log({
-    "sports": sportsOn,
-    "news": newsOn,
-    "entertainment": entertainmentOn,
-    "politics": politicsOn,
-    "pop": popOn,
-  })
+  // console.log({
+  //   "sports": sportsOn,
+  //   "news": newsOn,
+  //   "entertainment": entertainmentOn,
+  //   "politics": politicsOn,
+  //   "pop": popOn,
+  // })
 
   return (
     <IonList>
