@@ -1,6 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Timeline.css';
 import CurrentYear from "../components/timelineComponents/currentYear"
+import Content from "../components/timelineComponents/content"
 
 const Timeline: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Timeline: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <CurrentYear />
+        <Content />
       </IonContent>
     </IonPage>
   );
