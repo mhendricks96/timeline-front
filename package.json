@@ -70,7 +70,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.5.1"
+    "@capacitor/cli": "3.5.1",
+    "dotenv": "^16.0.1"
   },
   "description": "An Ionic project"
 }

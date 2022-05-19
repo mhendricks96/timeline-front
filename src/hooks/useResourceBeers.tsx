@@ -2,9 +2,12 @@ import axios from "axios";
 import useSWR from "swr";
 
 // import { useAuth } from "../contexts/auth";
-// const baseUrl = process.env.REACT_APP_BACKEND;
+const baseUrl = process.env.REACT_APP_NEWS_API;
 // export const apiUrl = baseUrl + "/api/friends/";
-const baseUrl = "https://api.punkapi.com/v2/beers"
+// const baseUrl = "https://api.punkapi.com/v2/beers"
+// const baseUrl = "http://api.mediastack.com/v1/news?access_key=b3b15e58a6dde2beaebb4c963d52d579&languages=en&date=2022-05-18&sort=published_asc&limit=100"
+
+// const mediaStackKey = "b3b15e58a6dde2beaebb4c963d52d579"
 
 export default function useResourceBeers() {
   // const { tokens, logout } = useAuth();
@@ -24,7 +27,7 @@ export default function useResourceBeers() {
     try {
       const response = await axios.get(url);
 
-      return response.data;
+      return response.data.data;
     } catch (error) {
       handleError(error);
     }
@@ -66,7 +69,7 @@ export default function useResourceBeers() {
 
   return {
     resourcesBeers: data,
-    // error,
+    error,
     // loadingFriends: tokens && !error && !data,
     // createResourceFriends,
     // deleteResourceFriends,

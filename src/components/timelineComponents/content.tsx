@@ -2,9 +2,11 @@ import {
   IonInfiniteScroll,
   IonInfiniteScrollContent,
   IonItem,
-  IonLabel,
   IonList,
-  useIonViewWillEnter,
+  IonCard,
+  IonCardTitle,
+  IonCardContent,
+  // useIonViewWillEnter,
 } from "@ionic/react";
 import { useState, useEffect } from "react";
 import useResourceBeers from "../../hooks/useResourceBeers";
@@ -14,14 +16,13 @@ const Content: React.FC = () => {
   const [isInfiniteDisabled, setInfiniteDisabled] = useState(false);
 
   const { resourcesBeers } = useResourceBeers();
-  console.log(resourcesBeers)
-  const beerNames: string[] = []
-
+  // console.log(resourcesBeers)
+  const beerTitles: any[] = []
 
   const pushData = () => {
     const max = data.length;
     const min = max;
-    const newData = beerNames;
+    const newData = beerTitles;
     for (let i = min; i < max; i++) {
       newData.push("Item" + i);
     }
@@ -39,32 +40,31 @@ const Content: React.FC = () => {
     }, 500);
   };
 
-  // useIonViewWillEnter(() => {
-  //   pushData();
-
-  // });
-
   useEffect(() => {
     if (resourcesBeers){
 
       for (let i = 0; i < resourcesBeers.length; i++) {
-        let beerName: string = resourcesBeers[i].name
-        beerNames.push(beerName)
-        beerNames.push(beerName)
-        
+        let beerTitle: string = resourcesBeers[i].title
+        let beerDescription: string = resourcesBeers[i].description
+        beerTitles.push([beerTitle, beerDescription]); 
       }
     }
     pushData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resourcesBeers]);
-
 
   return (
     <div>
       <IonList>
         {data.map((item, index) => {
+          let title = item[0];
+          let description = item[1];
           return (
             <IonItem key={index}>
-              <IonLabel>{item}</IonLabel>
+              <IonCard>
+                <IonCardTitle>{title}</IonCardTitle>
+                <IonCardContent>{description}</IonCardContent>
+              </IonCard>
             </IonItem>
           );
         })}
