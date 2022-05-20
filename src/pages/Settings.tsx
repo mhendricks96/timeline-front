@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Settings.css';
-import ToggleButtons from "../components/settingsComponents/toggleButtons"
-import YearSelector from "../components/settingsComponents/yearSelector"
+import ToggleButtons from "../components/settingsComponents/toggleButtons";
+import YearSelector from "../components/settingsComponents/yearSelector";
 
 import { useAuth0 } from "@auth0/auth0-react";
 

@@ -6,7 +6,7 @@ const Friends: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Friends</IonTitle>
+          <IonTitle className="ion-text-center">Friends</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
