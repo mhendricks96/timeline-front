@@ -5,6 +5,7 @@ import {
   hourglassOutline,
 } from "ionicons/icons";
 
+import Landing from "./Landing"
 import Friends from "./Friends";
 import Timeline from "./Timeline";
 import Settings from "./Settings";
@@ -41,6 +42,14 @@ export const pages = [
     icon: idCardOutline,
     component: Tab4,
     isTab: true,
+    redirect: false,
+  },
+  {
+    label: "Landing",
+    path: "/landing",
+    icon: peopleOutline,
+    component: Landing,
+    isTab: false,
     redirect: true,
   },
 ];
