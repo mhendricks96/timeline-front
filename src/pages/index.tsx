@@ -9,7 +9,7 @@ import Landing from "./Landing"
 import Friends from "./Friends";
 import Timeline from "./Timeline";
 import Settings from "./Settings";
-import Tab4 from "./Tab4";
+import UserPage from "./userPage";
 
 export const pages = [
   {
@@ -37,10 +37,10 @@ export const pages = [
     redirect: false,
   },
   {
-    label: "User Info",
-    path: "/userinfo",
+    label: "User Page",
+    path: "/userPage",
     icon: idCardOutline,
-    component: Tab4,
+    component: UserPage,
     isTab: true,
     redirect: false,
   },

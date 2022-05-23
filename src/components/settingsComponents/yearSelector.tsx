@@ -19,6 +19,7 @@ const YearSelector : React.FC = () => {
     YearStore.update((s) => {
       s.year = selectedYear;
     });
+    localStorage.setItem('year', selectedYear);
   }
 
   return (

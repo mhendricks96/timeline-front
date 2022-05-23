@@ -6,12 +6,11 @@ const baseUrl = process.env.REACT_APP_BACKEND;
 export const apiUrl = baseUrl + "/api/friends/";
 
 export default function useResourceFriends() {
-  const { tokens, logout } = useAuth();
-
+  const { tokens, logout, django_user } = useAuth();
   const { data, error, mutate } = useSWR(
     [apiUrl, tokens],
     fetchResourceFriends
-  );
+    );
 
   async function fetchResourceFriends(url: string) {
     if (!tokens) {
@@ -22,6 +21,7 @@ export default function useResourceFriends() {
       const response = await axios.get(url, config());
       localStorage.setItem("friends", JSON.stringify(response.data));
 
+      // console.log(response.data)
       return response.data;
     } catch (error) {
       handleError(error);

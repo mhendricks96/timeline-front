@@ -8,15 +8,15 @@ import { AuthProvider } from '../src/contexts/auth.js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="the-timeline.us.auth0.com"
-      clientId="PMTYs7xqHaFgHOfNC0jzLc6uurr7EssS"
-      redirectUri={window.location.origin}
-    >
-      <AuthProvider>
+    <AuthProvider>
+      <Auth0Provider
+        domain="the-timeline.us.auth0.com"
+        clientId="PMTYs7xqHaFgHOfNC0jzLc6uurr7EssS"
+        redirectUri={window.location.origin}
+      >
         <App />
-      </AuthProvider>
-    </Auth0Provider>
+      </Auth0Provider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

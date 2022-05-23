@@ -25,17 +25,20 @@ export function AuthProvider(props) {
     const response = await axios.post(tokenUrl, { username, password });
 
     const decodedAccess = jwt_decode(response.data.access);
+    // console.log(response.data);
 
     const newState = {
       tokens: response.data,
-      user: {
+      django_user: {
         username: decodedAccess.username,
         email: decodedAccess.email,
         id: decodedAccess.user_id,
       },
     };
+    // console.log(newState);
 
     setState((prevState) => ({ ...prevState, ...newState }));
+    // console.log(newState.tokens);
   }
 
   function logout() {
@@ -45,7 +48,7 @@ export function AuthProvider(props) {
     };
     setState((prevState) => ({ ...prevState, ...newState }));
   }
-
+  // console.log(state);
   return (
     <AuthContext.Provider value={state}>{props.children}</AuthContext.Provider>
   );
