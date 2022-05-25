@@ -46,14 +46,6 @@ const FriendsList: React.FC = () => {
     }, 2000);
   }
 
-  // useEffect(() => {
-  //   login(user?.email, user?.sub)
-  //   FriendStore.update((s) => {
-  //     s.friends = resourcesFriends;
-  //   });
-    
-  // }, [resourcesFriends]);
-
   // console.log(friends)
 
   // const openModal = (friend: any) => {
@@ -90,12 +82,12 @@ const FriendsList: React.FC = () => {
                 if (friend.username !== user?.email) {
                   return (
                     <IonItem key={index}>
-                      {/* <IonAvatar>
+                      <IonAvatar>
                         <img
                           src={`https://avatars.dicebear.com/api/bottts/${friend.id}${friend.poopInfo}.svg?colorful=true`}
                           alt={"little robot avatar for each person"}
                         />
-                      </IonAvatar> */}
+                      </IonAvatar>
                       <IonLabel>
                         <h1>{friend.username}</h1>
                       </IonLabel>

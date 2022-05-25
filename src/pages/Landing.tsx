@@ -53,7 +53,13 @@ const Landing: React.FC = () => {
       try {
         // console.log(user)
         // login(user?.email, user?.sub)
+        createResourceUsers({
+          username: user?.email,
+          email: user?.email,
+          password: user?.sub,
+        })
         signIn(user?.email, user?.sub)
+        // signIn(user?.email, user?.sub)
         .then(() => {
           // console.log(django_user)
           FriendStore.update((s) => {
@@ -63,14 +69,10 @@ const Landing: React.FC = () => {
           // console.log(user)
           router.push("/timeline")
         })
-      } catch{
-        createResourceUsers({
-          username: user?.email,
-          email: user?.email,
-          password: user?.sub,
-        })
+      } catch {
+        signIn(user?.email, user?.sub)
         .then(() => {
-          // console.log(user)
+          console.log(user)
           router.push("/timeline")
         })
       }

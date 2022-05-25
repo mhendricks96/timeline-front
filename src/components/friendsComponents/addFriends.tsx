@@ -31,8 +31,7 @@ const AddFriends: React.FC = () => {
     useResourceSentRequests();
   const { resourcesRequests } = useResourceRequests();
 
-  const { user, isAuthenticated, isLoading } =
-    useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   // Global state variables
   const friends = useStoreState(FriendStore, getFriends);
@@ -48,10 +47,10 @@ const AddFriends: React.FC = () => {
   const [showRequests, setShowRequests] = useState<boolean>(false);
 
   const checkIfPendingDisabled = (user: any) => {
-    let disabled: boolean | undefined = undefined;
+    let disabled: boolean  = false;
     for (let i = 0; i < sentRequests.length; i++) {
       let request = sentRequests[i];
-      if (request.to_user === user.username && request.rejected === null) {
+      if (request.to_user === user.email && request.rejected === null) {
         disabled = true;
         return disabled;
       } else {
@@ -62,10 +61,10 @@ const AddFriends: React.FC = () => {
   };
 
   const checkIfPendingColor = (user: any) => {
-    let color: string | undefined = undefined;
+    let color: string  = "primary";
     for (let i = 0; i < sentRequests.length; i++) {
       let request = sentRequests[i];
-      if (request.to_user === user.username && request.rejected === null) {
+      if (request.to_user === user.email && request.rejected === null) {
         color = "medium";
         return color;
       } else {
@@ -76,10 +75,10 @@ const AddFriends: React.FC = () => {
   };
 
   const checkIfPendingString = (user: any) => {
-    let string: string | undefined = undefined;
+    let string: string = "send request";
     for (let i = 0; i < sentRequests.length; i++) {
       let request = sentRequests[i];
-      if (request.to_user === user.username && request.rejected === null) {
+      if (request.to_user === user.email && request.rejected === null) {
         string = "pending";
         return string;
       } else {
@@ -94,25 +93,42 @@ const AddFriends: React.FC = () => {
       to_user: user.username,
     });
     setSentRequests([...sentRequests, newRequest]);
+    console.log(newRequest);
   };
 
   useEffect(() => {
     // filtering through users
     if (resourcesUsers && friends && resourcesSentRequests && isAuthenticated) {
-      let friendEmails: any[] = [];
+      let friendNames: any[] = [];
+      // console.log(resourcesUsers, friends);
 
       for (let i = 0; i < friends.length; i++) {
-        let friend = friends[i];
-        let email = friend.email;
-        friendEmails.push(email);
-        friendEmails.push(user?.email);
+        let friend = friends[i].email;
+        // let email = friend.email;
+        friendNames.push(friend);
+        friendNames.push(user?.email);
       }
-      setPotentialFriends(
-        resourcesUsers.filter((user: any) => !friendEmails.includes(user.email))
-      );
+
+      for (let i = 0; i <resourcesUsers.length; i++){
+        let person = resourcesUsers[i]
+        if (!friendNames.includes(person.email)){
+          // console.log(person)
+          setPotentialFriends((potentialFriends: any) => [...potentialFriends, person]);
+        }
+      }
+
       setSentRequests(resourcesSentRequests);
     }
-  }, [resourcesUsers, friends, resourcesSentRequests, isAuthenticated,user?.email]);
+  }, [
+    resourcesUsers,
+    friends,
+    resourcesSentRequests,
+    isAuthenticated,
+    user,
+  ]);
+
+  // console.log(potentialFriends);
+  // console.log(friends)
 
   return (
     <IonContent>
@@ -157,28 +173,27 @@ const AddFriends: React.FC = () => {
 
       <h4 className="ion-text-center">Possible Friends</h4>
 
-      {potentialFriends && sentRequests && isAuthenticated ? (
+      {potentialFriends && sentRequests && isAuthenticated && friends? (
         <IonList>
           {
-            // eslint-disable-next-line array-callback-return
             potentialFriends.map(
               // eslint-disable-next-line array-callback-return
               (user: any, index: React.Key | null | undefined) => {
+                // console.log(user, friends)
                 if (
-                  possibleFriend &&
-                  user.username  &&
+                  (possibleFriend) &&
                   user.username
                     .toLowerCase()
-                    .includes(`${possibleFriend.toLowerCase()}`)
+                    .includes(possibleFriend.toLowerCase())
                 ) {
                   return (
                     <IonItem key={index}>
-                      {/* <IonAvatar>
+                      <IonAvatar>
                         <img
                           src={`https://avatars.dicebear.com/api/bottts/${user.id}${user.poopInfo}.svg?colorful=true`}
                           alt={"little robot avatar for each person"}
                         />
-                      </IonAvatar> */}
+                      </IonAvatar>
                       <IonLabel>
                         <h1>{user.username}</h1>
                         <h3>{user.email}</h3>
@@ -190,7 +205,7 @@ const AddFriends: React.FC = () => {
                         disabled={checkIfPendingDisabled(user)}
                         onClick={() => handleRequest(user)}
                       >
-                        {checkIfPendingString(user) || "send request"}
+                        {checkIfPendingString(user)}
                       </IonButton>
                     </IonItem>
                   );
@@ -202,7 +217,7 @@ const AddFriends: React.FC = () => {
       ) : (
         ""
       )}
-      {showRequests ? 'pending request component' : ""}
+      {showRequests ? "pending request component" : ""}
     </IonContent>
   );
 };
