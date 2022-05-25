@@ -12,8 +12,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { IonButton } from "@ionic/react";
 import UserInfo from "../components/userInfo";
 
-const Tab4: React.FC = () => {
-  const { loginWithRedirect, logout, isAuthenticated, isLoading } =
+const UserPage: React.FC = () => {
+  const { loginWithRedirect, logout, isAuthenticated, isLoading, user } =
     useAuth0();
 
   // console.log(user)
@@ -21,6 +21,7 @@ const Tab4: React.FC = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
+  // console.log(user)
 
   return (
     <IonPage>
@@ -43,4 +44,4 @@ const Tab4: React.FC = () => {
   );
 };
 
-export default Tab4;
+export default UserPage;

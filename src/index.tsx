@@ -4,16 +4,19 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { AuthProvider } from '../src/contexts/auth.js';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="the-timeline.us.auth0.com"
-      clientId="PMTYs7xqHaFgHOfNC0jzLc6uurr7EssS"
-      redirectUri={window.location.origin}
-    >
-      <App />
-    </Auth0Provider>
+    <AuthProvider>
+      <Auth0Provider
+        domain="the-timeline.us.auth0.com"
+        clientId="PMTYs7xqHaFgHOfNC0jzLc6uurr7EssS"
+        redirectUri={window.location.origin}
+      >
+        <App />
+      </Auth0Provider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

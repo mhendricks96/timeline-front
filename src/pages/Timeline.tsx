@@ -13,7 +13,7 @@ const Timeline: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <CurrentYear />
-        <Content />
+        {/* <Content /> */}
       </IonContent>
     </IonPage>
   );
